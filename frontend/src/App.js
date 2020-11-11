@@ -1,20 +1,26 @@
 import React from 'react';
-import{Container} from 'react-bootstrap';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import HomeScreen from './Screens/HomeScreen'
+import ProductScreen from './Screens/ProductScreen'
+import Cart from './Screens/CartScreen'
 function App() {
   return (
-    <>
-    <Header/>
-    <main className='py-3'>
-      <Container>
-      <h1> Welcome to Shop</h1>
-      </Container>
+
+    <Router>
+      <Header />
+      <main className='py-3'>
+        <Container>
+          <Route path='/' component={HomeScreen} exact />
+          <Route path='/product/:id' component={ProductScreen} />
+          <Route path='/cart/:id?' component={Cart} />
+        </Container>
       </main>
-      <Footer/>
-      
-    </>
-  );
+      <Footer />
+    </Router>
+  )
 }
 
 export default App;
